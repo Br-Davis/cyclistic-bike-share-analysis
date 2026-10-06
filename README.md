@@ -8,18 +8,25 @@ The goal was to answer the business question:
 
 **How do annual members and casual riders use Cyclistic bikes differently?**
 
-The analysis was completed using **Excel, BigQuery SQL, and Tableau Public**. Twelve months of trip data were cleaned, combined, transformed, and analyzed to identify trends in ride frequency, ride duration, day-of-week usage, seasonality, and bike type preference.
+The analysis was completed using **Excel, BigQuery SQL, Google Sheets, and Tableau Public**. Twelve months of trip data were cleaned, combined, transformed, and analyzed to identify trends in ride frequency, ride duration, day-of-week usage, seasonality, and bike type preference.
+
+## Project Links
+
+- [View the Tableau Public Dashboard](https://public.tableau.com/app/profile/brian.davis1592/viz/CyclisticUserAnalysis_17909320764440/Dashboard1)
+- [View SQL Queries](sql/)
+- [View Full Case Study Report](report/Cyclistic_Bike_Share_Case_Study.pdf)
+- [Divvy Public Data Source](https://divvy-tripdata.s3.amazonaws.com/index.html)
 
 ## Tools Used
 
 - **Excel** — initial cleaning and creation of ride length and day-of-week fields
 - **BigQuery / SQL** — data combination, transformation, aggregation, and analysis
+- **Google Sheets / Connected Sheets** — transferring BigQuery summary results into Tableau Public
 - **Tableau Public** — dashboard development and visualization
-- **Google Sheets / Connected Sheets** — transferring BigQuery summary data into Tableau Public
 
 ## Data Source
 
-The project uses public 2025 trip data from Chicago’s Divvy bike-share system, provided by Motivate International Inc.
+This project uses public 2025 trip data from Chicago’s Divvy bike-share system, provided by Motivate International Inc.
 
 For the Google Data Analytics case study, Divvy data is used as the dataset for the fictional Cyclistic bike-share company.
 
@@ -64,7 +71,7 @@ while others contained:
 
 I standardized the format using `LPAD()` and converted the duration into total seconds using `SUBSTR()` and `CAST()`.
 
-This created a new numeric field:
+This created a numeric field:
 
 `ride_length_seconds`
 
@@ -75,8 +82,6 @@ which could then be used with aggregate functions such as `AVG()`.
 The analysis focused on several behavioral differences between members and casual riders.
 
 ### Average Ride Length
-
-Average ride duration:
 
 | Rider Type | Average Ride Length |
 |---|---:|
@@ -126,12 +131,12 @@ Members also completed more rides than casual riders in every month of the year.
 
 ### Electric Bike Usage
 
-I also calculated electric-bike usage by rider type.
+I also calculated electric-bike usage by rider type during exploratory analysis.
 
 - **Casual riders:** 72.46%
 - **Members:** 64.71%
 
-This analysis was completed as part of the exploratory work, although it was not included as a primary finding in the final Tableau dashboard.
+This analysis was not included as a primary finding in the final Tableau dashboard.
 
 ## Key Findings
 
@@ -147,28 +152,20 @@ Together, these patterns suggest that casual riders may use the service more oft
 
 The trip data does not directly identify trip purpose, so this interpretation should be treated as a likely behavioral pattern rather than a confirmed cause.
 
-## Tableau Dashboards
+## Tableau Dashboard
 
-The final Tableau dashboards focus on two areas:
-
-### Ridership Patterns
-
-Visualizes:
+The final Tableau dashboards visualize:
 
 - Monthly ridership by rider type
 - Ridership by day of week
-
-### Ride Duration
-
-Visualizes:
-
 - Average ride length by rider type
 - Average ride length by day of week
 
 Together, the dashboards show both **when riders use Cyclistic** and **how long they ride**.
 
-**Tableau Public:**  
-https://public.tableau.com/views/CyclisticUserAnalysis_17909320764440/Dashboard2
+### Interactive Dashboard
+
+[View the Cyclistic User Analysis on Tableau Public](https://public.tableau.com/app/profile/brian.davis1592/viz/CyclisticUserAnalysis_17909320764440/Dashboard1)
 
 ## Recommendations
 
@@ -184,11 +181,11 @@ Casual riders are most active on weekends and also take their longest rides duri
 
 Weekend-focused digital campaigns could promote the value of an annual membership to riders who repeatedly use Cyclistic for leisure trips.
 
-### 3. Emphasize value for frequent, longer casual rides
+### 3. Emphasize membership value for frequent, longer casual rides
 
 Casual riders average substantially longer trips than members.
 
-Cyclistic could test marketing that shows frequent casual riders how repeated single rides compare with the value of an annual membership.
+Cyclistic could test marketing that shows frequent casual riders how repeated individual rides compare with the value of an annual membership.
 
 ## Repository Structure
 
@@ -196,16 +193,21 @@ Cyclistic could test marketing that shows frequent casual riders how repeated si
 cyclistic-bike-share-analysis/
 │
 ├── README.md
+│
 ├── sql/
-│   ├── cleaning.sql
-│   ├── monthly_ridership.sql
-│   ├── weekday_analysis.sql
-│   ├── ride_length_analysis.sql
-│   └── bike_type_analysis.sql
+│   ├── 01_combine_monthly_tables.sql
+│   ├── 02_clean_ride_length.sql
+│   ├── 03_monthly_ridership.sql
+│   ├── 04_day_of_week_analysis.sql
+│   ├── 05_average_ride_length.sql
+│   └── 06_electric_bike_analysis.sql
 │
 ├── visuals/
 │   ├── ridership_dashboard.png
 │   └── ride_time_dashboard.png
 │
-└── report/
-    └── Cyclistic_Bike_Share_Case_Study.pdf
+├── report/
+│   └── Cyclistic_Bike_Share_Case_Study.pdf
+│
+└── data/
+    └── README.md

@@ -186,28 +186,3 @@ Weekend-focused digital campaigns could promote the value of an annual membershi
 Casual riders average substantially longer trips than members.
 
 Cyclistic could test marketing that shows frequent casual riders how repeated individual rides compare with the value of an annual membership.
-
-## Repository Structure
-
-```text
-cyclistic-bike-share-analysis/
-│
-├── README.md
-│
-├── sql/
-│   ├── 01_combine_monthly_tables.sql
-│   ├── 02_clean_ride_length.sql
-│   ├── 03_monthly_ridership.sql
-│   ├── 04_day_of_week_analysis.sql
-│   ├── 05_average_ride_length.sql
-│   └── 06_electric_bike_analysis.sql
-│
-├── visuals/
-│   ├── ridership_dashboard.png
-│   └── ride_time_dashboard.png
-│
-├── report/
-│   └── Cyclistic_Bike_Share_Case_Study.pdf
-│
-└── data/
-    └── README.md
